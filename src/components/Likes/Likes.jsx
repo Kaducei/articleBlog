@@ -7,6 +7,7 @@ import styles from './Likes.module.scss';
 function Likes({ likes, slug, favorited }) {
   const [like, setLike] = useState(likes);
   const [favoriteArticle] = articlesAPI.useFavoriteArticleMutation();
+
   const handleFavoriteArticle = async (value) => {
     await favoriteArticle({
       value,
@@ -14,7 +15,9 @@ function Likes({ likes, slug, favorited }) {
       slug,
     });
   };
+
   const id = Math.random(1, 9999999) * 3;
+
   return (
     <div className={styles.likes}>
       <label htmlFor={id}>

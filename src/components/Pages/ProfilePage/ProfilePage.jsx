@@ -20,6 +20,7 @@ function ProfilePage() {
       .catch((err) => err);
   };
   const { data } = articlesAPI.useGetCurrentUserQuery(localStorage.loginToken);
+
   const {
     register,
     handleSubmit,

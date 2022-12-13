@@ -13,6 +13,9 @@ import styles from './RegisterPage.module.scss';
 function RegisterPage() {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState();
+  const [red, setRed] = useState();
+  const [userRegister] = articlesAPI.useRegisterUserMutation();
+  const [userLogIn] = articlesAPI.useLogInUserMutation();
 
   const {
     register,
@@ -21,9 +24,6 @@ function RegisterPage() {
     setError,
   } = useForm();
 
-  const [red, setRed] = useState();
-  const [userRegister] = articlesAPI.useRegisterUserMutation();
-  const [userLogIn] = articlesAPI.useLogInUserMutation();
   localStorage.removeItem('loginToken');
 
   const handleUserLogIn = async () => {
@@ -52,7 +52,7 @@ function RegisterPage() {
         })
         .catch((error) => {
           setRed(false);
-          console.log(error);
+          return error;
         });
     }
   };
