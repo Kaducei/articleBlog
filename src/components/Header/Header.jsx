@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { logOut, logIn } from '../../Redux/slices/loginSlice';
-import avatar from '../Images/avatar.png';
+import avatar from '../assets/avatar.png';
 import articlesAPI from '../services/articlesService';
 
 import styles from './Header.module.scss';

@@ -14,7 +14,7 @@
 }
 
 .fakeCheckbox {
-  background: url('../Images/likes.svg');
+  background: url('../assets/likes.svg');
   display: inline-block;
   width: 16px;
   height: 15px;
@@ -22,7 +22,7 @@
 }
 
 .realCheckbox:checked ~ .fakeCheckbox {
-  background: url('../Images/likes-active.svg');
+  background: url('../assets/likes-active.svg');
   width: 16px;
   height: 14px;
 }
