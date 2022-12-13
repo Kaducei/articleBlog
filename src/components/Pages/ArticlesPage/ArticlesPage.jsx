@@ -40,7 +40,9 @@ function ArticlesPage() {
       );
     });
 
-  return isLogin ? (
+  return !isLogin ? (
+    <Redirect to="/sign-in" />
+  ) : (
     <>
       <ul style={{ margin: 'auto' }}>{elements || <Spin indicator={antIcon} />}</ul>
       <Pagination
@@ -52,8 +54,6 @@ function ArticlesPage() {
         onChange={(value) => dispatch(pagUp(value))}
       />
     </>
-  ) : (
-    <Redirect to="/sign-in" />
   );
 }
 export default ArticlesPage;

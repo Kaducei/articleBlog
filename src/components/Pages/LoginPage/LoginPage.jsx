@@ -71,6 +71,7 @@ function LoginPage() {
         <label className={styles.label}>
           Password
           <input
+            type="password"
             className={errors.password && styles.inputError}
             placeholder="Password"
             {...register('password', {
