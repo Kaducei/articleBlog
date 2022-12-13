@@ -1,0 +1,109 @@
+ul {
+  list-style: none;
+}
+.flexCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  max-width: 900px;
+  flex-grow: 1;
+  background: #fff;
+  margin-top: 59px;
+  padding: 48px 32px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.124);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 9px;
+}
+.areaInput {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2px;
+  margin-top: 12px;
+}
+.label input {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+.inputError {
+  border: 1px solid red !important;
+}
+
+.submitButton {
+  margin: 15px 0 8px;
+}
+
+.dontHaveAccount {
+  text-align: center;
+}
+.error {
+  color: red;
+}
+.tagContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2px;
+  margin-top: 12px;
+}
+.tagInput {
+  min-width: 300px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 5px;
+}
+.deleteButton {
+  color: red;
+  background: none;
+  border: 1px solid red;
+  padding: 3px;
+  border-radius: 5px;
+  margin-left: 15px;
+  width: 80px;
+  height: 40px;
+  cursor: pointer;
+}
+.deleteButton:hover {
+  color: rgb(250, 133, 133);
+  border-color: rgb(250, 133, 133);
+}
+.appendButton {
+  color: #1890ff;
+  background: none;
+  border: 1px solid #1890ff;
+  padding: 3px;
+  border-radius: 5px;
+  width: 80px;
+  height: 40px;
+  cursor: pointer;
+}
+.appendButton:hover {
+  color: #65b1f8;
+  border: 1px solid #65b1f8;
+}
+.tagsWrapper {
+  display: flex;
+}
+.appendWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.tagsWrapper {
+  align-items: baseline;
+  gap: 10px;
+}

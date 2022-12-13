@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+.title {
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 28px;
+  margin-right: 13px;
+  overflow: hidden;
+}
+.tag {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  padding: 0px 4px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  user-select: none;
+}
+.tagsArea {
+  padding-top: 4px;
+}
+.userAvatar {
+  width: 46px;
+  height: 46px;
+  margin-left: 12px;
+  border-radius: 50%;
+}
+.userInfo {
+  flex-shrink: 0;
+  display: flex;
+}
+
+.userName {
+  padding-top: 3px;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.85);
+  text-align: right;
+}
+
+.date {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+  line-height: 22px;
+  text-align: right;
+  user-select: none;
+}

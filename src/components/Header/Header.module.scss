@@ -1,0 +1,105 @@
+.header {
+  background-color: #fff;
+  padding: 16px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+}
+
+.brand:hover {
+  color: lighten($color: #000, $amount: 40);
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 27px;
+  cursor: pointer;
+}
+
+.profile:hover {
+  color: lighten($color: #000, $amount: 40);
+}
+
+.profileName {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.profileName:hover {
+  color: lighten($color: rgba(0, 0, 0, 0.85), $amount: 40);
+}
+
+.avatar {
+  margin-left: 13px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.createArticleButton {
+  border: 1px solid #52c41a;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 14px;
+  padding: 6px 10px;
+  color: #52c41a;
+  cursor: pointer;
+  margin-right: 27px;
+}
+
+.createArticleButton:hover {
+  color: darken($color: #52c41a, $amount: 10);
+  border-color: darken($color: #52c41a, $amount: 10);
+}
+
+.logOutButton {
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 18px;
+  padding: 8px 18px;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.logOutButton:hover {
+  color: lighten($color: rgba(0, 0, 0, 0.75), $amount: 40);
+  border-color: lighten($color: rgba(0, 0, 0, 0.75), $amount: 40);
+}
+
+.signInButton {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.signInButton:hover {
+  color: lighten($color: rgba(0, 0, 0, 0.75), $amount: 40);
+}
+
+.signUpButton {
+  font-size: 18px;
+  color: #52c41a;
+  border: 1px solid #52c41a;
+  padding: 6px 18px;
+  border-radius: 5px;
+  margin-left: 15px;
+}
+
+.signUpButton:hover {
+  color: lighten($color: #52c41a, $amount: 20);
+}

@@ -1,0 +1,92 @@
+.article {
+  padding: 17px 19px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.124);
+  width: 1000px;
+  margin: auto;
+  margin-top: 24px;
+}
+
+.shortDescription {
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 25px;
+  margin-top: 16px;
+}
+
+.fullDescriptionBody ol {
+  padding-left: 30px;
+}
+.descWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.deleteButton {
+  color: red;
+  background: none;
+  border: 1px solid red;
+  padding: 3px;
+  border-radius: 5px;
+  width: 80px;
+  cursor: pointer;
+}
+.deleteButton:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
+  color: rgb(253, 98, 98);
+  border: 1px solid rgb(253, 103, 103);
+}
+.editButton {
+  color: #52c41a;
+  border: 1px solid #52c41a;
+  background: none;
+  padding: 3px;
+  margin: 5px;
+  width: 80px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+.editButton:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
+  color: darken($color: #52c41a, $amount: 10);
+  border-color: darken($color: #52c41a, $amount: 10);
+}
+.confirm {
+  position: absolute;
+  gap: 5px;
+  max-width: 300px;
+  left: 65%;
+  max-height: 300px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.124);
+  border-radius: 10px;
+  padding: 10px;
+  transition: 1s;
+}
+
+.confirmWrapper {
+  display: flex;
+  gap: 5px;
+}
+.confirmButton {
+  color: red;
+  border: 1px solid red;
+  background: none;
+  padding: 3px;
+  margin: 5px;
+  width: 80px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+.confirmButton:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
+  color: rgb(253, 98, 98);
+  border: 1px solid rgb(253, 103, 103);
+}
+.edits {
+  transition: 1s;
+}

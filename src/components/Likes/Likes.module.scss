@@ -1,0 +1,36 @@
+.likes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.realCheckbox {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.fakeCheckbox {
+  background: url('../Images/likes.svg');
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.realCheckbox:checked ~ .fakeCheckbox {
+  background: url('../Images/likes-active.svg');
+  width: 16px;
+  height: 14px;
+}
+
+.likesCount {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 16px;
+  line-height: 22px;
+  margin-left: 5px;
+  user-select: none;
+}
