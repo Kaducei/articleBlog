@@ -50,7 +50,7 @@ function LoginPage() {
   }, [userData]);
 
   return red ? (
-    <Redirect to="/" />
+    <Redirect to="/articles" />
   ) : (
     <div className={('container', styles.flexCenter)}>
       <form onSubmit={handleSubmit(onSubmit)} action="" className={styles.form}>
