@@ -37,7 +37,7 @@ function EditArticle() {
     if (!userData) return;
     await editArticle({
       slug,
-      body: { article: { ...userData, tagList: userData.tag.map((item) => item.firstName) } },
+      body: { article: { ...userData, tagList: userData?.tagList.map((item) => item.firstName) || [] } },
       loginToken: localStorage.loginToken,
     })
       .unwrap()

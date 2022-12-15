@@ -108,7 +108,10 @@ const articlesAPI = createApi({
           Authorization: `Token ${loginToken}`,
         },
       }),
-      invalidatesTags: [{ type: 'Articles', id: 'LIST' }],
+      invalidatesTags: [
+        { type: 'Article', id: 'ONE' },
+        { type: 'Articles', id: 'LIST' },
+      ],
     }),
     favoriteArticle: build.mutation({
       query: ({ token, slug, value }) => ({

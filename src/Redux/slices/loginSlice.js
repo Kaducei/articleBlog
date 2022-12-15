@@ -17,7 +17,7 @@ const loginSlice = createSlice({
       state.isLogin = false;
     },
     pagUp(state, action) {
-      state.pagCounter = action.payload * 5;
+      state.pagCounter = (action.payload - 1) * 5;
     },
   },
 });
