@@ -47,7 +47,7 @@ function ArticlesPage() {
       <Pagination
         defaultCurrent={localStorage.page}
         style={{ margin: 'auto', padding: '10px' }}
-        total={(data?.articlesCount && data.articlesCount - 5) || 25}
+        total={(data?.articlesCount && data.articlesCount - 5) || 10000}
         defaultPageSize={5}
         size="small"
         showSizeChanger={false}
