@@ -12,7 +12,7 @@ const antIcon = <LoadingOutlined style={{ fontSize: 100 }} spin />;
 function ArticlesPage() {
   const dispatch = useDispatch();
 
-  dispatch(pagUp(localStorage.page || 0));
+  dispatch(pagUp(localStorage.page || 1));
 
   const pagCounter = useSelector((state) => state.loginSlice.pagCounter);
 
