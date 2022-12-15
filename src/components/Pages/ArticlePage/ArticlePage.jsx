@@ -50,7 +50,7 @@ function ArticlePage() {
           />
           <div className={styles.descWrapper}>
             <p className={styles.shortDescription}>{data.article.description}</p>
-            {data.article.author.username === loginData.user.username && !confirm ? (
+            {data.article.author.username === loginData?.user.username && !confirm ? (
               <div className={styles.edits}>
                 <div>
                   <button
