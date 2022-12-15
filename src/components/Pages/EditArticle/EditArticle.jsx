@@ -70,7 +70,7 @@ function EditArticle() {
           Title
           <input
             defaultValue={articleData.article.title}
-            className={errors.email && styles.inputError}
+            className={errors.title && styles.inputError}
             placeholder="Title"
             {...register('title', {
               required: { value: true, message: 'Title is required.' },
@@ -82,7 +82,7 @@ function EditArticle() {
           Short description
           <input
             defaultValue={articleData.article.description}
-            className={errors.password && styles.inputError}
+            className={errors.description && styles.inputError}
             placeholder="Short description"
             {...register('description', {
               required: { value: true, message: 'Short description is required.' },
@@ -95,7 +95,7 @@ function EditArticle() {
           <textarea
             defaultValue={articleData.article.body}
             rows={10}
-            className={(errors.password && styles.inputError) || styles.areaInput}
+            className={`${errors.body && styles.inputError} ${styles.areaInput}`}
             placeholder="Text"
             {...register('body', {
               required: { value: true, message: 'Short description is required.' },
@@ -109,6 +109,7 @@ function EditArticle() {
             {fields.map((item, index) => (
               <li key={item.id} className={styles.tagwrapper__item}>
                 <input
+                  className={errors.tagList && styles.inputError}
                   {...register(`tagList.${index}.firstName`, {
                     required: { value: true, message: 'Tag is required.' },
                   })}

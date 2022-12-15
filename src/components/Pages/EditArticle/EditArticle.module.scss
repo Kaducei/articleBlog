@@ -140,3 +140,9 @@ ul {
   display: flex;
   gap: 15px;
 }
+.inputError {
+  border: 1px solid red !important;
+  &:focus-visible {
+    outline: 1px solid red;
+  }
+}

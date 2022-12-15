@@ -63,7 +63,7 @@ function CreateArticle() {
         <label className={styles.label}>
           Title
           <input
-            className={errors.email && styles.inputError}
+            className={errors.title && styles.inputError}
             placeholder="Title"
             {...register('title', {
               required: { value: true, message: 'Title is required.' },
@@ -74,7 +74,7 @@ function CreateArticle() {
         <label className={styles.label}>
           Short description
           <input
-            className={errors.password && styles.inputError}
+            className={errors.description && styles.inputError}
             placeholder="Short description"
             {...register('description', {
               required: { value: true, message: 'Short description is required.' },
@@ -86,7 +86,7 @@ function CreateArticle() {
           Text
           <textarea
             rows={10}
-            className={(errors.password && styles.inputError) || styles.areaInput}
+            className={`${errors.body && styles.inputError} ${styles.areaInput}`}
             placeholder="Text"
             {...register('body', {
               required: { value: true, message: 'Short description is required.' },
@@ -100,6 +100,7 @@ function CreateArticle() {
             {fields.map((item, index) => (
               <li key={item.id} className={styles.tagwrapper__item}>
                 <input
+                  className={errors.tag && styles.inputError}
                   {...register(`tag.${index}.firstName`, {
                     required: { value: true, message: 'Tag is required.' },
                   })}
