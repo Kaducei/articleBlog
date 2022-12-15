@@ -31,7 +31,7 @@ function CreateArticle() {
   const handleSetArticle = async () => {
     if (!userData) return;
     await setArticle({
-      body: { article: { ...userData, tagList: userData.tag.map((item) => item.firstName) } },
+      body: { article: { ...userData, tagList: userData.tag?.map((item) => item.firstName) || [] } },
       loginToken: localStorage.loginToken,
     })
       .unwrap()
@@ -53,6 +53,8 @@ function CreateArticle() {
   useEffect(() => {
     handleSetArticle();
   }, [userData]);
+  console.log(userData);
+  console.log(fields);
 
   return red ? (
     <Redirect to="/" />
@@ -94,30 +96,37 @@ function CreateArticle() {
           />
           {errors.body && <span className={styles.error}>{errors.body.message}</span>}
         </label>
-        <label className={styles.label}>
-          Tags
-          <div className={styles.tagsWrapper}>
-            <ul className={styles.tagContainer}>
-              {fields.map((item, index) => (
-                <li key={item.id}>
-                  <input className={styles.tagInput} {...register(`tag.${index}.firstName`)} />
-                  <button className={styles.deleteButton} type="button" onClick={() => remove(index)}>
+        <div className={styles.tagwrapper}>
+          <label>Tags</label>
+          <ul className={styles.taglist}>
+            {fields.map((item, index) => (
+              <li key={item.id} className={styles.tagwrapper__item}>
+                <input {...register(`tag.${index}.firstName`)} />
+                <div className={styles.buttonwrapper}>
+                  <Button className={styles.button} ghost danger onClick={() => remove(index)}>
                     Delete
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <div className={styles.appendWrapper}>
-              <button className={styles.appendButton} type="button" onClick={() => append({})}>
+                  </Button>
+                  {fields.length - 1 === index && (
+                    <Button className={styles.button} ghost type="primary" onClick={() => append({})}>
+                      Add tag
+                    </Button>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+          {!fields.length && (
+            <div className={styles.buttonwrapper}>
+              <Button className={styles.button} ghost type="primary" onClick={() => append({})}>
                 Add tag
-              </button>
+              </Button>
             </div>
+          )}
+          <div className={styles.submitButton}>
+            <Button htmlType="submit" type="primary" block>
+              Send
+            </Button>
           </div>
-        </label>
-        <div className={styles.submitButton}>
-          <Button htmlType="submit" type="primary" block>
-            Send
-          </Button>
         </div>
       </form>
     </div>

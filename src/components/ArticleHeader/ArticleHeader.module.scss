@@ -23,9 +23,13 @@
   margin-bottom: 8px;
   font-size: 12px;
   user-select: none;
+  min-height: 20px;
+  min-width: 20px;
 }
 .tagsArea {
   padding-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .userAvatar {
   width: 46px;

@@ -95,7 +95,7 @@ function ArticlePage() {
             ) : null}
           </div>
           <div className={styles.fullDescriptionBody}>
-            <ReactMarkdown>{data.article.body}</ReactMarkdown>
+            <ReactMarkdown className={styles.markdownBody}>{data.article.body}</ReactMarkdown>
           </div>
         </div>
       </div>

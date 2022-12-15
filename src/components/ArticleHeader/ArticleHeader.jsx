@@ -13,7 +13,7 @@ function ArticleHeader({ title, created, likes, username, image, tagList, slug, 
       <div>
         <div className={styles.flexRow}>
           <Link className={styles.title} to={`/articles/${slug}`}>
-            {title ? (title.length < 30 ? title : title.slice(0, 50)) : 'none'}
+            {title ? (title.length < 30 ? title : title.slice(0, 50)) : ''}
           </Link>
           <Likes likes={likes} slug={slug} favorited={favorited} />
         </div>
@@ -21,7 +21,7 @@ function ArticleHeader({ title, created, likes, username, image, tagList, slug, 
           {tagList &&
             tagList.map((item) => (
               <span className={styles.tag} key={Math.random(1, 9999)}>
-                {item ? (item.length < 30 ? item : item.slice(0, 10)) : 'none'}
+                {item ? (item.length < 30 ? item : item.slice(0, 10)) : ''}
               </span>
             ))}
         </div>

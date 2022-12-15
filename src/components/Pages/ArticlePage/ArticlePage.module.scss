@@ -90,3 +90,7 @@
 .edits {
   transition: 1s;
 }
+.markdownBody {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}

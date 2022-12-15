@@ -16,13 +16,17 @@ function EditArticle() {
   const [editArticle] = articlesAPI.useEditArticleMutation();
   const { slug } = useParams();
 
+  const { data: articleData } = articlesAPI.useGetArticleQuery({ Token: localStorage.loginToken, slug });
+
   const [red, setRed] = useState();
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm();
+  } = useForm({
+    defaultValues: { tagList: articleData.article.tagList.map((item) => ({ firstName: item })) },
+  });
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -65,6 +69,7 @@ function EditArticle() {
         <label className={styles.label}>
           Title
           <input
+            defaultValue={articleData.article.title}
             className={errors.email && styles.inputError}
             placeholder="Title"
             {...register('title', {
@@ -76,6 +81,7 @@ function EditArticle() {
         <label className={styles.label}>
           Short description
           <input
+            defaultValue={articleData.article.description}
             className={errors.password && styles.inputError}
             placeholder="Short description"
             {...register('description', {
@@ -87,6 +93,7 @@ function EditArticle() {
         <label className={styles.label}>
           Text
           <textarea
+            defaultValue={articleData.article.body}
             rows={10}
             className={(errors.password && styles.inputError) || styles.areaInput}
             placeholder="Text"
@@ -96,34 +103,37 @@ function EditArticle() {
           />
           {errors.body && <span className={styles.error}>{errors.body.message}</span>}
         </label>
-        <label className={styles.label}>
-          Tags
-          <div className={styles.tagsWrapper}>
-            <ul className={styles.tagContainer}>
-              {fields.map((item, index) => (
-                <li key={item.id}>
-                  <input className={styles.tagInput} {...register(`tag.${index}.firstName`)} />
-                  <button className={styles.deleteButton} type="button" onClick={() => remove(index)}>
+        <div className={styles.tagwrapper}>
+          <label>Tags</label>
+          <ul className={styles.taglist}>
+            {fields.map((item, index) => (
+              <li key={item.id} className={styles.tagwrapper__item}>
+                <input {...register(`tagList.${index}.firstName`)} />
+                <div className={styles.buttonwrapper}>
+                  <Button className={styles.button} ghost danger onClick={() => remove(index)}>
                     Delete
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <div className={styles.appendWrapper}>
-              <button
-                className={styles.appendButton}
-                type="button"
-                onClick={() => append({ firstName: 'bill', lastName: 'luo' })}
-              >
+                  </Button>
+                  {fields.length - 1 === index && (
+                    <Button className={styles.button} ghost type="primary" onClick={() => append({})}>
+                      Add tag
+                    </Button>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+          {!fields.length && (
+            <div className={styles.buttonwrapper}>
+              <Button className={styles.button} ghost type="primary" onClick={() => append({})}>
                 Add tag
-              </button>
+              </Button>
             </div>
+          )}
+          <div className={styles.submitButton}>
+            <Button htmlType="submit" type="primary" block>
+              Send
+            </Button>
           </div>
-        </label>
-        <div className={styles.submitButton}>
-          <Button htmlType="submit" type="primary" block>
-            Send
-          </Button>
         </div>
       </form>
     </div>

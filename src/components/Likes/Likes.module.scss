@@ -19,6 +19,7 @@
   width: 16px;
   height: 15px;
   cursor: pointer;
+  transition: 1s;
 }
 
 .realCheckbox:checked ~ .fakeCheckbox {

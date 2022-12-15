@@ -2,7 +2,6 @@ import React from 'react';
 import { Pagination, Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import Article from '../../Article/Article';
 import articlesAPI from '../../services/articlesService';
@@ -11,8 +10,10 @@ import { pagUp } from '../../../Redux/slices/loginSlice';
 const antIcon = <LoadingOutlined style={{ fontSize: 100 }} spin />;
 
 function ArticlesPage() {
-  const isLogin = useSelector((state) => state.loginSlice.isLogin);
   const dispatch = useDispatch();
+
+  dispatch(pagUp(localStorage.page || 0));
+
   const pagCounter = useSelector((state) => state.loginSlice.pagCounter);
 
   const { data, isLoading } = articlesAPI.useFetchAllArticlesQuery({
@@ -40,18 +41,20 @@ function ArticlesPage() {
       );
     });
 
-  return !isLogin ? (
-    <Redirect to="/sign-in" />
-  ) : (
+  return (
     <>
       <ul style={{ margin: 'auto' }}>{elements || <Spin indicator={antIcon} />}</ul>
       <Pagination
+        defaultCurrent={localStorage.page}
         style={{ margin: 'auto', padding: '10px' }}
-        total={isLoading || data.articlesCount}
+        total={(data?.articlesCount && data.articlesCount - 5) || 25}
         defaultPageSize={5}
         size="small"
         showSizeChanger={false}
-        onChange={(value) => dispatch(pagUp(value))}
+        onChange={(value) => {
+          localStorage.setItem('page', value);
+          dispatch(pagUp(value));
+        }}
       />
     </>
   );
