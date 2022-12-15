@@ -53,8 +53,6 @@ function CreateArticle() {
   useEffect(() => {
     handleSetArticle();
   }, [userData]);
-  console.log(userData);
-  console.log(fields);
 
   return red ? (
     <Redirect to="/" />
@@ -101,7 +99,11 @@ function CreateArticle() {
           <ul className={styles.taglist}>
             {fields.map((item, index) => (
               <li key={item.id} className={styles.tagwrapper__item}>
-                <input {...register(`tag.${index}.firstName`)} />
+                <input
+                  {...register(`tag.${index}.firstName`, {
+                    required: { value: true, message: 'Tag is required.' },
+                  })}
+                />
                 <div className={styles.buttonwrapper}>
                   <Button className={styles.button} ghost danger onClick={() => remove(index)}>
                     Delete
@@ -114,6 +116,7 @@ function CreateArticle() {
                 </div>
               </li>
             ))}
+            {errors.tag?.length && <span className={styles.error}>Each tag must be</span>}
           </ul>
           {!fields.length && (
             <div className={styles.buttonwrapper}>

@@ -108,7 +108,11 @@ function EditArticle() {
           <ul className={styles.taglist}>
             {fields.map((item, index) => (
               <li key={item.id} className={styles.tagwrapper__item}>
-                <input {...register(`tagList.${index}.firstName`)} />
+                <input
+                  {...register(`tagList.${index}.firstName`, {
+                    required: { value: true, message: 'Tag is required.' },
+                  })}
+                />
                 <div className={styles.buttonwrapper}>
                   <Button className={styles.button} ghost danger onClick={() => remove(index)}>
                     Delete
@@ -121,6 +125,7 @@ function EditArticle() {
                 </div>
               </li>
             ))}
+            {errors.tagList?.length && <span className={styles.error}>Each tag must be</span>}
           </ul>
           {!fields.length && (
             <div className={styles.buttonwrapper}>
