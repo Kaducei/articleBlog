@@ -130,8 +130,8 @@ function EditArticle() {
             </div>
           )}
           <div className={styles.submitButton}>
-            <Button htmlType="submit" type="primary" block>
-              Send
+            <Button style={{ width: '33%' }} htmlType="submit" type="primary" block>
+              Edit
             </Button>
           </div>
         </div>
