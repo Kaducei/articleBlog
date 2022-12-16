@@ -1,6 +1,6 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { logOut, logIn } from '../../Redux/slices/loginSlice';
 import avatar from '../assets/avatar.png';
@@ -12,6 +12,7 @@ function Header() {
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.loginSlice.isLogin);
   const history = useHistory();
+  const [imgError, setError] = useState(false);
 
   const { data } = articlesAPI.useGetCurrentUserQuery(localStorage.loginToken);
 
@@ -35,7 +36,12 @@ function Header() {
             <div className={styles.profile}>
               <Link className={styles.profileName} to="/profile">
                 {(data && data.user.username) || 'nothing'}
-                <img src={data.user.image || avatar} alt="avatar" className={styles.avatar} />
+                <img
+                  src={imgError ? avatar : data.user.image}
+                  onError={() => setError(true)}
+                  alt="avatar"
+                  className={styles.avatar}
+                />
               </Link>
             </div>
             <button

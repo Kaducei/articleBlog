@@ -1,13 +1,15 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import format from 'date-fns/format';
 
 import Likes from '../Likes';
+import avatar from '../assets/avatar.png';
 
 import styles from './ArticleHeader.module.scss';
 
 function ArticleHeader({ title, created, likes, username, image, tagList, slug, favorited }) {
+  const [imgError, setError] = useState(false);
   return (
     <header className={styles.header}>
       <div>
@@ -34,7 +36,12 @@ function ArticleHeader({ title, created, likes, username, image, tagList, slug, 
           <div className={styles.date}>{format(new Date(created), 'PP')}</div>
         </div>
 
-        <img src={image} alt="avatar" className={styles.userAvatar} />
+        <img
+          src={imgError ? avatar : image}
+          onError={() => setError(true)}
+          alt="avatar"
+          className={styles.userAvatar}
+        />
       </div>
     </header>
   );
