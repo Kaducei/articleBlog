@@ -125,7 +125,7 @@ function RegisterPage() {
           {errors.repeatPassword && <span className={styles.error}>{errors.repeatPassword.message}</span>}
         </label>
         <div className={styles.agrement}>
-          <input type="checkbox" name="agrement" className={styles.checkbox} id="agrement-checkbox" />
+          <input required type="checkbox" name="agrement" className={styles.checkbox} id="agrement-checkbox" />
           <label htmlFor="agrement-checkbox">I agree to the processing of my personal information</label>
         </div>
         <Button htmlType="submit" type="primary" block>
