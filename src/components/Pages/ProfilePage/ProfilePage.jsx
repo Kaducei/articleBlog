@@ -11,12 +11,16 @@ import styles from './ProfilePage.module.scss';
 function ProfilePage() {
   const [userData, setUserData] = useState();
   const [updateUser] = articlesAPI.useUpdateUserMutation();
-
+  const [complete, setComplete] = useState();
   const handleUpdateUser = async () => {
     if (!userData) return;
     await updateUser({ loginToken: localStorage.loginToken, body: { user: { ...userData, bio: 'somebio' } } })
       .unwrap()
-      .then((response) => response)
+      .then((response) => {
+        setComplete(<span className={styles.complete}>Editing complete</span>);
+        setTimeout(() => setComplete(''), 3000);
+        return response;
+      })
       .catch((err) => err);
   };
   const { data } = articlesAPI.useGetCurrentUserQuery(localStorage.loginToken);
@@ -87,8 +91,9 @@ function ProfilePage() {
             placeholder="Avatar"
             {...register('image')}
           />
-          {errors.image && <span className={styles.error}>{errors.image.message}</span>}
+          {complete}
         </label>
+
         <div className={styles.submitButton}>
           <Button htmlType="submit" type="primary" block size="large">
             Edit

@@ -76,7 +76,10 @@ const articlesAPI = createApi({
         body,
         method: 'PUT',
       }),
-      invalidatesTags: [{ type: 'User', id: 'PERSON' }],
+      invalidatesTags: [
+        { type: 'User', id: 'PERSON' },
+        { type: 'Articles', id: 'LIST' },
+      ],
     }),
     setArticle: build.mutation({
       query: ({ body, loginToken }) => ({
