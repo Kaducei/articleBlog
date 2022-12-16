@@ -9,10 +9,10 @@ import articlesAPI from '../services/articlesService';
 import styles from './Header.module.scss';
 
 function Header() {
+  const [imgError, setError] = useState(false);
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.loginSlice.isLogin);
   const history = useHistory();
-  const [imgError, setError] = useState(false);
 
   const { data } = articlesAPI.useGetCurrentUserQuery(localStorage.loginToken);
 
@@ -47,7 +47,6 @@ function Header() {
             <button
               onClick={() => {
                 history.push('sign-in');
-                localStorage.removeItem('page');
                 localStorage.removeItem('loginToken');
                 dispatch(logOut());
               }}
