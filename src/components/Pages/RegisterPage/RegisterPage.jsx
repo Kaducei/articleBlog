@@ -51,6 +51,8 @@ function RegisterPage() {
           localStorage.setItem('loginToken', response.user.token);
         })
         .catch((error) => {
+          setError('email', { message: error.data.errors.email });
+          setError('username', { message: error.data.errors.username });
           setRed(false);
           return error;
         });
