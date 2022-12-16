@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -24,20 +25,20 @@ function Header() {
 
   return (
     <div className={styles.header}>
-      <Link to={isLogin ? '/' : '/sign-in'} className={styles.brand}>
+      <Link to="/" className={styles.brand}>
         Realworld Blog
       </Link>
       <div className={styles.profile}>
         {isLogin && data ? (
           <>
-            <Link className={styles.createArticleButton} to="/create-article">
+            <Link disabled={!isLogin} className={styles.createArticleButton} to="/create-article">
               Create article
             </Link>
             <div className={styles.profile}>
               <Link className={styles.profileName} to="/profile">
                 {(data && data.user.username) || 'nothing'}
                 <img
-                  src={imgError ? avatar : data.user.image}
+                  src={imgError ? avatar : data.user.image ? data.user.image : avatar}
                   onError={() => setError(true)}
                   alt="avatar"
                   className={styles.avatar}
@@ -45,6 +46,7 @@ function Header() {
               </Link>
             </div>
             <button
+              disabled={!isLogin}
               onClick={() => {
                 history.push('sign-in');
                 localStorage.removeItem('loginToken');
