@@ -37,7 +37,7 @@ function ArticleHeader({ title, created, likes, username, image, tagList, slug, 
         </div>
 
         <img
-          src={imgError ? image : avatar}
+          src={imgError ? avatar : image}
           onError={() => setError(true)}
           alt="avatar"
           className={styles.userAvatar}
