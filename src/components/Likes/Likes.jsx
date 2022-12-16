@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import articlesAPI from '../services/articlesService';
 
 import styles from './Likes.module.scss';
 
 function Likes({ likes, slug, favorited }) {
+  const isLogin = useSelector((state) => state.loginSlice.isLogin);
+
   const [like, setLike] = useState(likes);
   const [favoriteArticle] = articlesAPI.useFavoriteArticleMutation();
 
@@ -22,6 +25,7 @@ function Likes({ likes, slug, favorited }) {
     <div className={styles.likes}>
       <label htmlFor={id}>
         <input
+          disabled={!isLogin}
           defaultChecked={favorited}
           onClick={(e) => {
             setLike(!favorited ? likes + e.target.checked : likes + e.target.checked - 1);

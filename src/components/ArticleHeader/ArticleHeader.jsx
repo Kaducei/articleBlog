@@ -19,11 +19,13 @@ function ArticleHeader({ title, created, likes, username, image, tagList, slug, 
         </div>
         <div className={styles.tagsArea}>
           {tagList &&
-            tagList.map((item) => (
-              <span className={styles.tag} key={Math.random(1, 9999)}>
-                {item ? (item.length < 30 ? item : item.slice(0, 10)) : ''}
-              </span>
-            ))}
+            tagList
+              .filter((elem) => elem !== ' ' && elem !== '')
+              .map((item) => (
+                <span className={styles.tag} key={Math.random(1, 9999)}>
+                  {item ? (item.length < 30 ? item : item.slice(0, 10)) : ''}
+                </span>
+              ))}
         </div>
       </div>
       <div className={styles.userInfo}>

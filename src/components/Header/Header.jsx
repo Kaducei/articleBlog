@@ -41,6 +41,7 @@ function Header() {
             <button
               onClick={() => {
                 history.push('sign-in');
+                localStorage.removeItem('page');
                 localStorage.removeItem('loginToken');
                 dispatch(logOut());
               }}
