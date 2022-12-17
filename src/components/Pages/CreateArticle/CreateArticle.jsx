@@ -127,7 +127,7 @@ function CreateArticle() {
             </div>
           )}
           <div className={styles.submitButton}>
-            <Button htmlType="submit" type="primary" block>
+            <Button style={{ width: '33%' }} htmlType="submit" type="primary" block>
               Send
             </Button>
           </div>
